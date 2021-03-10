@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AdivinhaONumero : MonoBehaviour
 {
+    [SerializeField] int minimiNoinicio = 20;
+    [SerializeField] int maximoNoinicio = 80;
 
     int minimo; //declaração da variável
     int maximo; //declaração de variável
@@ -12,44 +14,17 @@ public class AdivinhaONumero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-         * Este é um comentário de linhas múltiplas
-         * onde estou a explicar para que é que serve
-         * o código abaixo
-         */
-
-        minimo = 1;   //este é o valor minimo do jogo
-        maximo = 100; //este é o valor máximo do jogo
-
-
-        /*
-         * Operadores matemáticos
-         * + Soma
-         * - Subtracção
-         * * Multiplicação
-         * / Divisão
-         * % Resto da divisão inteira
-         */
-
-        Debug.Log("Olá, vamos jogar um jogo!");
-        Debug.Log("Eu vou tentar adivinhar o número em que pensas");
-        Debug.Log("Pensa então num número entre " + minimo + " e " + maximo);
-
-        Debug.Log("Eu acho que o número em que pensaste é " + valorAAdivinhar);
-
-        CalculaEImprime();
+        Iniciar();
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        //O JOGADOR CARREGOU EM ALGUMA TECLA?
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //Sim - Se tiver pressionado; Não - caso contrário
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             //Código a executar se o jogador pressionar a tecla para cima
 
-            minimo = valorAAdivinhar;
+            minimo= valorAAdivinhar;
             CalculaEImprime();
 
         }
@@ -65,12 +40,19 @@ public class AdivinhaONumero : MonoBehaviour
         {
             //Código a executar se o jogador pressionar o Enter
             Debug.Log("O teu número é " + valorAAdivinhar + ". Viste como eu sou um génio?!");
+            Debug.Log("O jogo vai ser reiniciado");
+            Debug.Log("                          ");
+            Debug.Log("                          ");
+            Debug.Log("                          ");
+            Debug.Log("                          ");
+
+            Iniciar();
         }
     }
-    
+
     void CalculaEImprime()          //MÉTODO OU FUNÇÃO
     {
-        valorAAdivinhar = (minimo + maximo) / 2;
+        valorAAdivinhar = Random.Range(minimo , maximo);
 
         Debug.Log("Eu acho que o número em que pensaste é " + valorAAdivinhar);
 
@@ -79,5 +61,19 @@ public class AdivinhaONumero : MonoBehaviour
         Debug.Log("Seta Baixo - o número em que pensaste é menor");
         Debug.Log("Enter - o número em que pensaste é " + valorAAdivinhar + ".");
     }
+
+    void Iniciar()
+    {
+        minimo = minimiNoinicio-1;   //este é o valor minimo do jogo
+        maximo = maximoNoinicio+1; //este é o valor máximo do jogo
+
+        Debug.Log("Olá, vamos jogar um jogo!");
+        Debug.Log("Eu vou tentar adivinhar o número em que pensas");
+        Debug.Log("Pensa então num número entre " + minimiNoinicio + " e " + maximoNoinicio);
+
+        CalculaEImprime();
+    }
+
+     
 
 }

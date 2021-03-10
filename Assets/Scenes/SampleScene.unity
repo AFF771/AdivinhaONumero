@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c751e7b4dfc14e27bd374079f2f7153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimoNoInicio: 1
-  maximoNoInicio: 320
+  minimiNoinicio: 0
+  maximoNoinicio: 300
 --- !u!4 &1075410309
 Transform:
   m_ObjectHideFlags: 0
